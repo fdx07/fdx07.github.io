@@ -8,13 +8,25 @@
 
 /* Base styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: var(--navy);
     margin: 0;
     padding: 0;
     background-color: var(--light-gray);
+    font-size: 16px;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
 
 /* Header and Navigation */
 header {
@@ -40,9 +52,9 @@ nav {
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
 }
 
 .site-title {
