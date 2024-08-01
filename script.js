@@ -31,6 +31,4 @@ const observer = new IntersectionObserver((entries) => {
     });
 });
 
-document.querySelectorAll('.blog-post').forEach(post => {
-    observer.observe(post);
-});
+
