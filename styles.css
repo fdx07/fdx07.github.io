@@ -334,7 +334,7 @@ footer {
 
 .quote-section {
     margin-bottom: 2.5rem; /* Reduced from 2rem */
-    padding: 0.5rem 0.5rem; /* Reduced vertical padding */
+    padding: 0.5rem 0rem; /* Reduced vertical padding */
     background-color: var(--navy);
     color: var(--light-gray);
     border-radius: 12px;
@@ -409,4 +409,4 @@ footer {
     .quote-section footer {
         font-size: 0.8em;
     }
-}
+}
