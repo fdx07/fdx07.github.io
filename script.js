@@ -31,4 +31,10 @@ const observer = new IntersectionObserver((entries) => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+    });
+});
+
 
