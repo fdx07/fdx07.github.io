@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-width: 100vh;
 }
 
 /* Typography */
@@ -168,15 +169,16 @@ main {
 /* Footer */
 footer {
     width: 100%;
-    background-color: var(--navy);
-    color: var(--light-gray);
+    background-color: var(--light-gray);
+    color: var(--navy);
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
     box-sizing: border-box;
-    position: relative;
-    z-index: 100;
+    margin-left: 0;
+    margin-right: 0;
 }
+
 
 /* Responsive design */
 @media (max-width: 768px) {
@@ -390,12 +392,14 @@ footer {
 }
 
 .quote-section footer {
-    font-size: 1.1em; /* Slightly reduced */
+    font-size: 1.3em;
     text-align: center;
     margin-top: 0;
-    font-weight: 250;
-    align-self: center; /* Align the footer to the right */
+    font-weight: 500;
+    align-self: center;
     margin-bottom: 0;
+    background-color: var(--navy);
+    color: var(--light-gray);
 }
 
 /* Add a subtle glow effect on hover */
