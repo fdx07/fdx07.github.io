@@ -10,6 +10,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -56,11 +89,17 @@ Published: 2024 | By Faisal Durbaa
     places cybersecurity jobs in a crucial and high demand position for today’s and tomorrow’s
     world.</p>
     <h2>Economic Effects & Importance of Cybersecurity:</h2>
-    <img class="blog-photo-content" src="image.H3TUS2.png">
+    <h2>Total Cost of a Data Breach</h2>
+    <div class="chart-container fade-in">
+        <canvas id="lineChart"></canvas>
+    </div>
     <p>In 2023 the average total cost of a data breach globally was 4.45 million USD. And as
     data’s importance increases the costs will be changing accordingly in the future just like they
     did in the past years.</p>
-    <img class="blog-photo-content" src="image.LXKUS2.png">
+    <h2>Type of Data Compromised</h2>
+    <div class="chart-container fade-in">
+        <canvas id="barChart"></canvas>
+    </div>
     <p>The percentage of personal identifiable information (PII) has been rising at
     tremendous rates each year. Which poses a huge danger for personalized services and
     authentication through personal information.
@@ -110,7 +149,97 @@ Published: 2024 | By Faisal Durbaa
 <p>Social media: <a href="#">LinkedIn</a> | <a href="#">Twitter (X)</a> | <a href="#">Instagram</a></p></div>
 </article>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const chartContainers = document.querySelectorAll('.chart-container');
 
+    const options = {
+        root: null,
+        threshold: 0.4,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const canvas = entry.target.querySelector('canvas');
+                const chartId = canvas.id;
+
+                if (chartId === 'lineChart') {
+                    renderLineChart(canvas);
+                } else if (chartId === 'barChart') {
+                    renderBarChart(canvas);
+                }
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    chartContainers.forEach(container => {
+        observer.observe(container);
+    });
+
+    function renderLineChart(canvas) {
+        const ctxLine = canvas.getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                datasets: [{
+                    label: 'Cost (in $ millions)',
+                    data: [3.62, 3.86, 3.92, 3.86, 4.24, 4.35, 4.45],
+                    borderColor: '#4285F4',
+                    backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                    pointRadius: 5,
+                    pointBackgroundColor: '#4285F4',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: { callback: value => '$' + value }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderBarChart(canvas) {
+        const ctxBar = canvas.getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Customer PII', 'Employee PII', 'Intellectual Property', 'Anonymized Customer Data', 'Other Corporate Data'],
+                datasets: [
+                    { label: '2023', data: [52, 40, 34, 33, 21], backgroundColor: '#4285F4' },
+                    { label: '2022', data: [47, 34, 31, 26, 15], backgroundColor: '#174EA6' },
+                    { label: '2021', data: [44, 26, 27, 28, 12], backgroundColor: '#AECBFA' }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true, position: 'top' }
+                },
+                scales: {
+                    x: { stacked: false },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: value => value + '%' }
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
 <footer>
 © 2024 Faisal Durbaa. All rights reserved.
 </footer>
