@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Global styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -18,9 +19,9 @@
             background-color: #f9f9f9;
         }
 
-        h2 {
+        .chart-name {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             color: #333;
         }
 
@@ -30,6 +31,7 @@
             margin: 20px auto;
         }
 
+        /* Animation for fade-in effect */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -89,14 +91,14 @@ Published: 2024 | By Faisal Durbaa
     places cybersecurity jobs in a crucial and high demand position for today’s and tomorrow’s
     world.</p>
     <h2>Economic Effects & Importance of Cybersecurity:</h2>
-    <h2>Total Cost of a Data Breach</h2>
+    <div class="chart-name">Total Cost of a Data Breach</div>
     <div class="chart-container fade-in">
         <canvas id="lineChart"></canvas>
     </div>
     <p>In 2023 the average total cost of a data breach globally was 4.45 million USD. And as
     data’s importance increases the costs will be changing accordingly in the future just like they
     did in the past years.</p>
-    <h2>Type of Data Compromised</h2>
+    <div class="chart-name">Type of Data Compromised</div>
     <div class="chart-container fade-in">
         <canvas id="barChart"></canvas>
     </div>
@@ -113,7 +115,7 @@ Published: 2024 | By Faisal Durbaa
     <li>According to IBM Cost of a Data Breach 2023 Report, only one third of data breaches
     in organizations are discovered by their own security teams or tools.</li>
     <li>Notably, the healthcare industry, which experiences the costliest data breaches, has
-    seen a 53% increase in the average cost since 2020.</li>
+    seen a 53% increasse in the average cost since 2020.</li>
     <li>51% of the organizations are planning to invest in areas such as employee training,
     threat detection, planning and testing to develop their cybersecurity protection.</li>
     <li>According to ISC2 the cybersecurity workforce gap has reached <b>4 million
@@ -151,11 +153,12 @@ Published: 2024 | By Faisal Durbaa
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    // Intersection Observer for triggering charts on viewport entry
     const chartContainers = document.querySelectorAll('.chart-container');
 
     const options = {
         root: null,
-        threshold: 0.4,
+        threshold: 0.2, // Trigger when 20% of the chart container is visible
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -164,21 +167,25 @@ Published: 2024 | By Faisal Durbaa
                 const canvas = entry.target.querySelector('canvas');
                 const chartId = canvas.id;
 
+                // Initialize charts based on the canvas ID
                 if (chartId === 'lineChart') {
                     renderLineChart(canvas);
                 } else if (chartId === 'barChart') {
                     renderBarChart(canvas);
                 }
 
+                // Stop observing after initializing the chart
                 observer.unobserve(entry.target);
             }
         });
     }, options);
 
+    // Attach observer to each chart container
     chartContainers.forEach(container => {
         observer.observe(container);
     });
 
+    // Function to render the Line Chart
     function renderLineChart(canvas) {
         const ctxLine = canvas.getContext('2d');
         new Chart(ctxLine, {
@@ -211,6 +218,7 @@ Published: 2024 | By Faisal Durbaa
         });
     }
 
+    // Function to render the Bar Chart
     function renderBarChart(canvas) {
         const ctxBar = canvas.getContext('2d');
         new Chart(ctxBar, {
