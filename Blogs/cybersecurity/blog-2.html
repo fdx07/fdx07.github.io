@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Global styles */
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -27,11 +27,10 @@
 
         .chart-container {
             position: relative;
-            width: 80%;
+            width: 90%;
             margin: 20px auto;
         }
 
-        /* Animation for fade-in effect */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -153,12 +152,12 @@ Published: 2024 | By Faisal Durbaa
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Intersection Observer for triggering charts on viewport entry
+
     const chartContainers = document.querySelectorAll('.chart-container');
 
     const options = {
         root: null,
-        threshold: 0.2, // Trigger when 20% of the chart container is visible
+        threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -167,25 +166,21 @@ Published: 2024 | By Faisal Durbaa
                 const canvas = entry.target.querySelector('canvas');
                 const chartId = canvas.id;
 
-                // Initialize charts based on the canvas ID
                 if (chartId === 'lineChart') {
                     renderLineChart(canvas);
                 } else if (chartId === 'barChart') {
                     renderBarChart(canvas);
                 }
 
-                // Stop observing after initializing the chart
                 observer.unobserve(entry.target);
             }
         });
     }, options);
 
-    // Attach observer to each chart container
     chartContainers.forEach(container => {
         observer.observe(container);
     });
 
-    // Function to render the Line Chart
     function renderLineChart(canvas) {
         const ctxLine = canvas.getContext('2d');
         new Chart(ctxLine, {
@@ -200,7 +195,7 @@ Published: 2024 | By Faisal Durbaa
                     pointRadius: 5,
                     pointBackgroundColor: '#4285F4',
                     fill: true,
-                    tension: 0.5
+                    tension: 0.3
                 }]
             },
             options: {
@@ -218,7 +213,6 @@ Published: 2024 | By Faisal Durbaa
         });
     }
 
-    // Function to render the Bar Chart
     function renderBarChart(canvas) {
         const ctxBar = canvas.getContext('2d');
         new Chart(ctxBar, {
