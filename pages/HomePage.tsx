@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
   return (
     <div 
       className="min-h-screen flex flex-col items-center justify-center text-brand-text p-2 sm:p-4 pt-8 md:pt-12 bg-cover bg-center bg-no-repeat bg-fixed relative opacity-0 animate-fadeIn"
-      style={{ backgroundImage: "url('/bg.png')", animationDelay: '0.1s' }}
+      style={{ backgroundImage: "url('/public/bg.png')", animationDelay: '0.1s' }}
       aria-label="Homepage with background image"
     >
       {/* Overlay */}
