@@ -1,7 +1,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import ChevronLeftIcon from './icons/ChevronLeftIcon';
-import ChevronRightIcon from './icons/ChevronRightIcon';
+import ChevronLeftIcon from './icons/ChevronLeftIcon.tsx';
+import ChevronRightIcon from './icons/ChevronRightIcon.tsx';
 
 interface HorizontalScrollerWithArrowsProps {
   children: React.ReactNode;

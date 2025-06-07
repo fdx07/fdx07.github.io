@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { MOCK_BLOG_POSTS } from '../constants';
-import Card from '../components/Card';
-import SearchBar from '../components/SearchBar';
+import Card from '../components/Card.tsx';
+import SearchBar from '../components/SearchBar.tsx';
 import { BlogPost } from '../types';
 
 const BlogListPage: React.FC = () => {

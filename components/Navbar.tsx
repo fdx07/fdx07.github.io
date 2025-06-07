@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink as RouterNavLink } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
-import MenuIcon from './icons/MenuIcon';
-import CloseIcon from './icons/CloseIcon';
+import MenuIcon from './icons/MenuIcon.tsx';
+import CloseIcon from './icons/CloseIcon.tsx';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

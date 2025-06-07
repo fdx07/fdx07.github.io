@@ -1,7 +1,7 @@
 import React from 'react';
 import { EMAIL_ADDRESS, LINKEDIN_URL } from '../constants';
-import LinkedInIcon from '../components/icons/LinkedInIcon';
-import EmailIcon from '../components/icons/EmailIcon';
+import LinkedInIcon from '../components/icons/LinkedInIcon.tsx';
+import EmailIcon from '../components/icons/EmailIcon.tsx';
 
 const ContactPage: React.FC = () => {
   return (

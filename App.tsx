@@ -1,15 +1,15 @@
 
 import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage';
-import BlogListPage from './pages/BlogListPage';
-import BlogPostPage from './pages/BlogPostPage';
-import ProjectsListPage from './pages/ProjectsListPage';
-import ProjectOverviewPage from './pages/ProjectOverviewPage'; 
-import ProjectDetailPage from './pages/ProjectDetailPage';
-import AboutMePage from './pages/AboutMePage';
-import ContactPage from './pages/ContactPage';
+import Navbar from './components/Navbar.tsx';
+import HomePage from './pages/HomePage.tsx';
+import BlogListPage from './pages/BlogListPage.tsx';
+import BlogPostPage from './pages/BlogPostPage.tsx';
+import ProjectsListPage from './pages/ProjectsListPage.tsx';
+import ProjectOverviewPage from './pages/ProjectOverviewPage.tsx'; 
+import ProjectDetailPage from './pages/ProjectDetailPage.tsx';
+import AboutMePage from './pages/AboutMePage.tsx';
+import ContactPage from './pages/ContactPage.tsx';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();

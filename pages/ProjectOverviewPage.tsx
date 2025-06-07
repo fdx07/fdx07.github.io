@@ -3,12 +3,12 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { MOCK_PROJECTS } from '../constants';
 import { Project } from '../types';
-import Card from '../components/Card';
-import ChevronLeftIcon from '../components/icons/ChevronLeftIcon';
-import HorizontalScrollerWithArrows from '../components/HorizontalScrollerWithArrows';
-import CodeIcon from '../components/icons/CodeIcon';
-import DataIcon from '../components/icons/DataIcon';
-import ShareIcon from '../components/icons/ShareIcon';
+import Card from '../components/Card.tsx';
+import ChevronLeftIcon from '../components/icons/ChevronLeftIcon.tsx';
+import HorizontalScrollerWithArrows from '../components/HorizontalScrollerWithArrows.tsx';
+import CodeIcon from '../components/icons/CodeIcon.tsx';
+import DataIcon from '../components/icons/DataIcon.tsx';
+import ShareIcon from '../components/icons/ShareIcon.tsx';
 
 const ProjectOverviewPage: React.FC = () => {
   const navigate = useNavigate();

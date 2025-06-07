@@ -4,12 +4,12 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { MOCK_BLOG_POSTS, CHART_MOCK_DATA } from '../constants';
 import { BlogPost } from '../types';
-import Card from '../components/Card';
-import ShareIcon from '../components/icons/ShareIcon';
-import ChevronLeftIcon from '../components/icons/ChevronLeftIcon';
-import AnimatedChart from '../components/AnimatedChart';
-import { BlogLineChart, BlogBarChart } from '../components/BlogCharts'; 
-import HorizontalScrollerWithArrows from '../components/HorizontalScrollerWithArrows';
+import Card from '../components/Card.tsx';
+import ShareIcon from '../components/icons/ShareIcon.tsx';
+import ChevronLeftIcon from '../components/icons/ChevronLeftIcon.tsx';
+import AnimatedChart from '../components/AnimatedChart.tsx';
+import { BlogLineChart, BlogBarChart } from '../components/BlogCharts.tsx'; 
+import HorizontalScrollerWithArrows from '../components/HorizontalScrollerWithArrows.tsx';
 
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

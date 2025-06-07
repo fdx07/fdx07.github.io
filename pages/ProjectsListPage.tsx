@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { MOCK_PROJECTS } from '../constants';
-import Card from '../components/Card';
-import SearchBar from '../components/SearchBar';
+import Card from '../components/Card.tsx';
+import SearchBar from '../components/SearchBar.tsx';
 import { Project } from '../types';
 
 const ProjectsListPage: React.FC = () => {
