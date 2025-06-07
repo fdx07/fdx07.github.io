@@ -1,0 +1,539 @@
+
+
+<!-- Important Excel Keyboard Shortcuts Card (from PDF Page 2) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.2s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Important Excel Keyboard Shortcuts
+  </h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-brand-secondary divide-opacity-30">
+      <thead class="bg-background-900/30">
+        <tr>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Shortcut</th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Description</th>
+        </tr>
+      </thead>
+      <tbody class="bg-background-800 divide-y divide-brand-secondary divide-opacity-20">
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + Shift + Arrow</td><td class="px-4 py-2 text-sm text-brand-text">Select a group (filler or unfilled) of rows / columns</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + ;</td><td class="px-4 py-2 text-sm text-brand-text">Current date</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + Shift + ;</td><td class="px-4 py-2 text-sm text-brand-text">Current time</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + Backspace</td><td class="px-4 py-2 text-sm text-brand-text">Back to the selected previous cell</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + T</td><td class="px-4 py-2 text-sm text-brand-text">Create a table</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + Shift + L</td><td class="px-4 py-2 text-sm text-brand-text">Filter</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">F4 (in formulas)</td><td class="px-4 py-2 text-sm text-brand-text">Converts an ordinary cell to reference cell</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + Tab</td><td class="px-4 py-2 text-sm text-brand-text">Switching between Excel files</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + N</td><td class="px-4 py-2 text-sm text-brand-text">Creates new Excel file</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Ctrl + H</td><td class="px-4 py-2 text-sm text-brand-text">Find & Replace</td></tr>
+        <tr><td class="px-4 py-2 whitespace-nowrap text-sm text-brand-text">Alt + F11</td><td class="px-4 py-2 text-sm text-brand-text">Visual Basic</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Basic Functions Card (from PDF Page 2) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.3s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Basic Functions
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>=sum(C1,C2,C3)</code> // <code>=sum(C1:C3)</code>: summation</li>
+    <li><code>=average(C1,C2,C3)</code> // <code>=average(C1:C3)</code>: average</li>
+    <li><code>=max(C1,C2,C3)</code> // <code>=max(C1:C3)</code>: maximum value</li>
+    <li><code>=min(C1,C2,C3)</code> // <code>=min(C1:C3)</code>: minimum value</li>
+    <li><code>=counta(C1,C2,C3)</code> // <code>=counta(C1:C3)</code>: count all filled boxes</li>
+    <li>Putting a colon (:) between two cell locations defines an array.</li>
+    <li>Mathematical operations are represented with their signs (*, +, -, /) in formulas.</li>
+  </ul>
+</div>
+
+<!-- Tables Card (from PDF Page 2) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.4s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Tables
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Tables are a very practical way of presenting data. They make the data easier to understand and better looking. Also, they have many features that integrate into formulas as special ranges.</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>To create a table: select a range -&gt; Press Ctrl+L -&gt; There you have it!</li>
+    <li>To convert a table into a normal range: select a cell within the table-&gt; Go to Table Design tab -&gt; From Tools-&gt; Select “Convert to Range”</li>
+  </ul>
+</div>
+
+<!-- If Statements Card (from PDF Page 2) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.5s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    If Statements
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>If statements are used to adapt a single formula into multiple possible variants.</li>
+    <li>Formula: <code>&lt;=if(logical_test, [value_if_true], [value_if_false])&gt;</code></li>
+    <li>Nested If statements usage: <code>&lt;=IF(I3="A", 5, IF(I3="B", 7.5, IF(I3="C", 8, 4.5)))&gt;</code></li>
+  </ul>
+</div>
+
+<!-- Important Formatting Operations Card (from PDF Page 2 & 3) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.6s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Important Formatting Operations
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Hiding cells in excel is done by hiding columns or rows. Select the rows / columns from the indicator bar and press right click then hide them.</li>
+    <li>To unhide, select the rows (under:on) / columns (left:right) surrounding the hidden values and press right click then unhide them.</li>
+    <li>To print just the values (not the formulas) of the copied cells, select just values in paste options on the left side of Home tab.</li>
+    <li>To copy the format of a cell, select the cell and go to Home&gt; Clipboard&gt; Format Painter then select the cell(s) you want to paste the format at.</li>
+    <li>To change the place of an array without damaging other data, select the array then press shift. Carry the array to the intended place and leave it there. Keep pressing shift till you place the array. Utilize guidelines that appear to place the data easily.</li>
+    <li>To view the dates in a type you want (if this type doesn't exist already) choose the closest type to your will then go to custom section and modify the type you chose.</li>
+  </ul>
+</div>
+
+<!-- Charts Card (from PDF Page 3) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.7s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Charts
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>To rearrange or modify the data of a chart right click on the chart and go to select data.</li>
+    <li>When you click on a chart's right top corner it shows: Additional settings, styles, and data filtering options.</li>
+    <li>To modify the view of the data in a chart, right click on a data label and select format data labels. Then you can modify data labels' style and design.</li>
+  </ul>
+</div>
+
+<!-- Sparklines Card (from PDF Page 3) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.8s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Sparklines
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>If we have a dataset that may require tens of charts, we can use sparklines as tiny charts.</li>
+    <li>To add a sparkline: firstly, select the data source. Then, go to Insert&gt;Sparklines.</li>
+    <li>To delete a sparkline we select it and go to Design section then we choose clear option from the right side.</li>
+  </ul>
+</div>
+
+<!-- And Function Card (from PDF Page 3) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.9s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    And Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>&lt;=and(a, b, c)&gt;</code> this function generates “True” if all the conditions are true, and generates "False" if one or more of the conditions is false.</li>
+    <li>Normal usage: <code>=and(G4 = “Full Time”, I4&gt;7)</code>. If all the conditions are true generates: True, if they are not it generates: False.</li>
+    <li>Usage with 'if': <code>=IF(AND(C2="Full Time", G2&gt;=5),*(1+$K$4),IF(AND(C2="Part Time", G2&gt;7), F2*(1+$K$5),F2))</code></li>
+  </ul>
+</div>
+
+<!-- Or Function Card (from PDF Page 3 & 4) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.0s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Or Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>&lt;=or(a, b, c)&gt;</code> this function generates “True” if one of the conditions is true, and generates "False" if all the conditions are false.</li>
+    <li>Normal usage: <code>=or(G4 = “Full Time”, I4&gt;7)</code>. If one of the conditions is true generates: True, if there isn't true condition it generates: False.</li>
+    <li>Usage with 'if': <code>=IF(OR(B2 = "Mother", C2&gt;5,F2="Yes"), "Deserves", "Doesn't Deserve")</code></li>
+  </ul>
+</div>
+
+<!-- Pivot Tables Card (from PDF Page 4) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.1s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Pivot Tables
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>If you have a large dataset, and you want to view only specific groups of this dataset in the same place dynamically you can use pivot tables.</li>
+    <li>Datasets can be presented in different ways using pivot tables. A data column can be utilized in 4 ways: Columns, Rows, Filtering, Values.</li>
+    <li>Pivot tables don't refresh automatically, so you need to refresh them manually. Either by right clicking or going to analyze section.</li>
+    <li>In pivot tables you can change the mathematical operation that values section is making by right clicking on one of the values.</li>
+    <li>From "Design" tab you can change table's view.</li>
+    <li>To make your table more effective add charts.</li>
+    <li>If you add charts, to apply more data classification you can insert some buttons for filtration from analyze section &gt; insert slicer / insert timeline.</li>
+    <li>In pivot tables you can create groups of some rows & columns by selecting them then right clicking and choosing group.</li>
+  </ul>
+</div>
+
+<!-- Conditional Functions Card (from PDF Page 4 & 5) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.2s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Conditional Functions
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Countif:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li><code>&lt;=countif (range, criterion)&gt;</code> counts the cells that are in the range and fit the criterion you determined.</li>
+    <li>If you want to define a criterion like &gt;3 that contains non-numeric characters, you must define it in quotation marks. There shouldn't be spaces between non-numeric characters and other characters.</li>
+    <li>Example: <br><code>=COUNTIF(E5:E289, Q27)</code><br><code>=COUNTIF(C:C, "Dead")</code></li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Countifs:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li><code>&lt;=countifs([range1, criterion1], [range2, criterion2] ...)&gt;</code> counts the cells that are in the range and fit all the criteria you indicated.</li>
+    <li>In countifs() all ranges must contain the same number of cells.</li>
+    <li>Example: <br><code>=COUNTIFS(C4:C288, "Alive", D4:D288, "Unemployed")</code><br><code>=COUNTIFS(N:N, "&gt;=1-6-2017", N:N, "&lt;1-10-2017")</code></li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Sumif & Sumifs:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>&lt;=sumif(range, criterion, sum range)&gt;</code></li>
+    <li><code>&lt;=sumifs(sum range, criterion 1 range, criterion 1, criterion 2 range, criterion 2 ...)></code></li>
+    <li>Utilizing sumif & sumifs, we can use sum function depending on the criterion / criteria.</li>
+    <li>Example: <br><code>=SUMIF(D4:D288, P6, I4:I288)</code><br><code>=SUMIFS(F4:F288, C4:C288, "Dead", J4:J288, "Yes")</code></li>
+  </ul>
+</div>
+
+<!-- Pivot Tables vs Conditional Functions Card (from PDF Page 5) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.3s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Pivot Tables vs Conditional Functions
+  </h2>
+  <p class="text-brand-text leading-relaxed text-justify">When you need to perform multiple and distinct analyses on a large dataset, pivot tables are an efficient and quick way to do so. However, if you are going to perform a limited number of analyses, it's better to use conditional functions.</p>
+</div>
+
+<!-- Data Validation Card (from PDF Page 5) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.4s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Data Validation
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>We can limit / determine (character number, data type...) the data that a cell contains / will contain. From Data&gt; Data validation&gt; Settings...</li>
+    <li>Using this feature, we can add dropdown lists in the input area and make the process easier.</li>
+    <li>To change the criteria we set, reselect the same exact cells and repeat the process.</li>
+    <li>We can add input message that instructs data input process. Data validation&gt; Input message...</li>
+    <li>We can also modify the error alert that appears when the criteria are not applied. From Data validation&gt; Error alert...</li>
+  </ul>
+</div>
+
+<!-- Data Separation / Text to Columns Card (from PDF Page 5) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.5s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Data Separation / Text to Columns
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">To separate a dataset of texts like names and surnames into columns we can use this feature. From Data&gt; Data Tools&gt; Text to Columns. This feature consists of 3 steps:</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><strong>Data type:</strong> Here we determine if we want to separate the text using a sign it includes (delimited) or an alignment (fixed with) that appears between our data.</li>
+    <li><strong>Separation place / sign:</strong> Here we choose the delimiter or the index that we want separation operation to happen.</li>
+    <li><strong>Destination:</strong> Determine the destination.</li>
+  </ul>
+</div>
+
+<!-- Ampersand "&" and Concatenate Function Card (from PDF Page 5) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.6s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Ampersand "&" and Concatenate Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>To merge two cells, we can use ampersand “&” symbol. Eg: <code>= B2 & “ ” & C2</code></li>
+    <li>We can also use concatenate function: <code>=concatenate (B2, “ ”, C2)</code></li>
+    <li>We can benefit from ampersand symbol using it in formulas too: <code>=sum(A1:A5)&“ Students of " &sum(C1:C5)& “ groups.”</code></li>
+  </ul>
+</div>
+
+<!-- Remove Duplicates Card (from PDF Page 6) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.7s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Remove Duplicates
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>We usually use this feature to remove mistakenly duplicated data cells in a data set. Data&gt; Data tools&gt; Remove Duplicates...</li>
+    <li>We can also use it to get unique form of a data list that is duplicated many times in our data set.</li>
+    <li>Tip: When we are using this feature it's more accurate to choose columns that contain unique data as filterers.</li>
+  </ul>
+</div>
+
+<!-- Goal Seek Card (from PDF Page 6) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.8s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Goal Seek
+  </h2>
+  <p class="text-brand-text leading-relaxed text-justify">This analysis method helps us to make some changes in our numbers so we can reach an aimed result. Eg: We have sold 75 laptops, 850$ per each, total 63750$. But we want to know how much per each we should purchase our clients to reach 70000$ in total. Here goals seek's role comes in. Data&gt; What – If Analysis&gt; Goal seek...</p>
+</div>
+
+<!-- Vertical Lookup / VLOOKUP Function Card (from PDF Page 6) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.9s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Vertical Lookup / VLOOKUP Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>&lt;=vlookup (lookup value, table array, column index, range lookup)&gt;</code></li>
+    <li><strong>Lookup value:</strong> the value we are searching.</li>
+    <li><strong>Table array:</strong> the range of our search. (The value's column must be the first column of the range.)</li>
+    <li><strong>Column index:</strong> Column index number of the value we are looking for.</li>
+    <li><strong>Range lookup:</strong> Searching method. True =&gt; Approximate match / False =&gt; Exact Match</li>
+    <li>This function brings us values that match the criteria from a specific search range.</li>
+    <li>Example:<br><code>=VLOOKUP(A2, $L$2:$N$19, 2, FALSE)</code><br><code>=VLOOKUP(G6, $A$2:$D$147, 2, FALSE)</code></li>
+  </ul>
+</div>
+
+<!-- IFERROR Function Card (from PDF Page 6) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.0s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    IFERROR Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>&lt;=iferror(value, value if error)&gt;</code></li>
+    <li>The purpose of this function is being able to handle any error caused by any formula.</li>
+    <li>Example: <code>=IFERROR(VLOOKUP(A2, $L$2:$N$19, 2, FALSE), "")</code></li>
+  </ul>
+</div>
+
+<!-- Linking Sheets & Files Card (from PDF Page 6 & 7) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.1s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Linking Sheets & Files
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">If we want to use a value from another sheet / excel file, we start typing the formula and when it comes to linking cells we go to the sheets/ files we want to use data sources and we add the values we want via formula bar.</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Tip: Don't forget to add the symbol of your operation (+ / - /,/...) before changing sheet / file otherwise source location will change.</li>
+    <li>If we are using multiple files as data sources for our formula, we must be careful about file locations and if a file's location change, we should update it in the formula, otherwise our formula won't work.</li>
+    <li>To update source location, go to File&gt; Info&gt; scroll down, at right bottom corner&gt; edit links to the files.</li>
+  </ul>
+</div>
+
+<!-- Sheet / Workbook Protection Card (from PDF Page 7) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.2s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Sheet / Workbook Protection
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>To protect a sheet entirely, go to Review&gt; Protect Sheet.</li>
+    <li>To protect specific cells and unprotect others we select entire sheet then right click on any cell and select format cells. Then we go to protection and unselect locked. Afterwards we select cells that will be protected and lock them. Then we protect the sheet.</li>
+    <li>If we want to disable hide, unhide, move, copy, delete etc. features for sheets from a workbook we can protect the workbook from Review&gt; Protect Workbook.</li>
+    <li>To prevent any unauthorized log to the workbook we can encrypt it from File&gt; Info&gt; Protect Workbook.</li>
+  </ul>
+</div>
+
+<!-- Macro Card (from PDF Page 7) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.3s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Macro
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">Macro is one of the most useful tools in excel. If we are applying a multiple step process repeatedly in an excel workbook, we must be familiar with macro.</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Firstly, we go to View&gt; Macros&gt; Record Macro or we click to record sign at the left bottom corner then we give a name and a shortcut (optional) to our macro. Afterwards we choose where we want to use this macro. We have 3 options:</li>
+    <li><strong>This workbook (Only):</strong> Choosing this we'll be able to use this macro only in this file and the macro will be attached to this file, meaning if we share this file whoever opens it from any device, will be able to use this macro. Differently from other excel workbooks when we create a file-attached macro we must save the file in ".xlsm” (excel macro enabled workbook) format.</li>
+    <li><strong>New Workbook (Only):</strong> This option is like the first option but makes all the processes in a new workbook. Similarly, you must save the file in “.xlsm” format.</li>
+    <li><strong>Personal Macro Workbook:</strong> This option adds the macros we'll create to a personal macro workbook and makes our macros reachable (only) for us from any excel file. When we choose this option, we don't have to save the current file in a different format since the macro isn't attached to it. Also meaning that when we share this file, the person we shared the file with won't be able to use this macro tool.</li>
+  </ul>
+</div>
+
+<!-- Macro Buttons Card (from PDF Page 7 & 8) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.4s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Macro Buttons
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">Let's take a situation where we have a dataset summarized by a pivot table. Then we created a chart to represent the data better. And we want to add button slicers to the chart, but our data is complicated that it's exceeding slicer's analysis capabilities. So, we want to assign this complicated analysis process to a button. There are two main ways to make this:</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><strong>Developer Tab:</strong> Firstly, we record the process in a macro. Secondly, we go to Developer&gt; Controls&gt; Insert&gt; and click to Button. Then we assign the macro to this button.</li>
+    <li><strong>Custom Button:</strong> Similarly, we record the process in a macro. Then we go to Insert&gt; Illustrations&gt; Shapes and insert a shape we chose. We add text to it by right click & edit text. Then we make a right click and choose assign macro and assign the macro we recorded earlier.</li>
+  </ul>
+</div>
+
+<!-- Extending & Editing Macros Card (from PDF Page 8) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.5s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Extending & Editing Macros
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 font-semibold">Deleting Unnecessary Steps:</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">If we have recorded a macro but it contains some unnecessary steps, we can delete these steps using VB. Firstly, we go to Developer&gt; Visual Basic or Alt+F11. Then we open the module from current workbook's (file's name will be like "????.xlsm / .xlsx") or personal macro file. Here we'll see the code of the macros that are attached to this workbook. So, we can delete unnecessary lines from here.</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Note: If you are not familiar with VB code be careful doing changes on the codes, otherwise you can harm them.</li>
+    <li>When we want to extend the processes that a macro is doing, we must go to VB code and add the codes of the additional process to the module. But this might be hard for those who aren't familiar with VB codes.</li>
+    <li>Here is an easier way to do it: <br>We record (Be sure that you recorded it in the same place with the first macro.) the additional process as a new macro. Then we open these macros' module. We will see the codes of both macros. Cut the code of the second macro and paste it in an appropriate place between first macro's codes, then delete additional lines of the second macro.</li>
+  </ul>
+</div>
+
+<!-- Important Functions & Operations Card (from PDF Page 8 & 9) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.6s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Important Functions & Operations
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">TRIM Function:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>In data entry to remove unnecessary spaces from a text we can use this function.</li>
+    <li>Formula: <code>&lt;TRIM(C4)&gt;</code></li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Getting Rid of All Spaces in a Range:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>Select the range go to find & replace find spaces and replace them with nothing.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Processing Dates:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>Sometimes when we import data to excel it might not process these dates. (Example: when we filter the dates, they don't appear withing groups.)</li>
+    <li>To solve this problem, we select the range then go to find and replace and change the symbol between day, month and year.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">LEFT Function:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>When we want to split text, we can use this function to do so.</li>
+    <li>The first argument is the full text and the second one is the number of characters in the first part.</li>
+    <li>Formula: <code>&lt;LEFT(text, num chars)&gt;</code></li>
+  </ul>
+</div>
+
+<!-- Counting Unique Values Card (from PDF Page 9) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.7s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Counting Unique Values
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Use countif function for all characters in the range. Then divide 1 with the result of each one. The sum of these will be counted without duplicates.</li>
+    <li>Or use this formula: <code>&lt;=Sum (1/countif (W3:W19, W3:W19))&gt;</code> Execute it using Ctrl + Shift + Enter.</li>
+    <li>Using remove duplicates from data tab.</li>
+  </ul>
+</div>
+
+<!-- Alternative for MAXIF & MAXIFS Functions Card (from PDF Page 9) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.8s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Alternative for MAXIF & MAXIFS Functions
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Maxif & Maxifs are in paid version of the excel so if we don't have premium version, we can use the formula below.</li>
+    <li><code>&lt;=Max (if (a2:a271 = q24, I2:I271))&gt;</code> apply by Ctrl + Shift + Enter.</li>
+  </ul>
+</div>
+
+<!-- RAND & RANDBETWEEN Functions Card (from PDF Page 9) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 2.9s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    RAND & RANDBETWEEN Functions
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>When we want to create some random numbers between 0 and 1, we can use rand function. If we want numbers from a larger range, we can use this: <code>&lt;=rand () *&lt;max number&gt;&gt;</code>.</li>
+    <li>To enlarge the range, we can use <code>&lt;=randbetween (smallest number, largest number)&gt;</code> function.</li>
+  </ul>
+</div>
+
+<!-- IFS Function Card (from PDF Page 9) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.0s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    IFS Function
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>This function is an alternative for nested if usage.</li>
+    <li>Example: <code>IFS (N4&gt;50, “a”, N4&gt;30, “b”, N4&gt;20, “c”)</code></li>
+  </ul>
+</div>
+
+<!-- Advanced Pivot Tables Card (from PDF Page 9 & 10) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.1s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Advanced Pivot Tables
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Custom Pivot Table Analyses:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>If we want to use an analyze method that doesn't exist in pivot table operations, we can add our custom formula from Analyze&gt;Fields, Items & Sets&gt; Calculated Field.</li>
+    <li>For example, we are analyzing dataset of a project made on the people of a country. We have population and target numbers of each subdistrict, and we have a column that calculates the coverage by dividing the target to the population. When we create the pivot table and put the governates as rows and coverage as value we will either get the sum of the coverage or the average* (not actual) coverage in this governate. So, we won't be able to reach the actual coverage for the governates.</li>
+    <li>Here we create a custom analyze method. We choose the columns that will be divided <code>&lt;=Target / Population&gt;</code> and press Enter.</li>
+    <li>Now we have the actual coverage number for governates.</li>
+    <li>*: we have 2 groups. First: 100 people and we covered 99 of them the coverage is 99%. Second: 1000 people and we covered 500 of them the coverage is 50%. If we take the average the result will be 74% while the actual coverage is 54%.</li>
+    <li>Another example: We have sales data for some products. But sales numbers are separated into 3 fields that represent the size. We want to get the total number of sales for each product. We can do this by adding a new column to the source dataset. And alternatively, we can do it using custom formulation.</li>
+    <li>If we want to edit or delete custom formulation, we can do this by going back to Fields, Items & Sets.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Editing Pivot Table's Range:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>If we add a new column to the source dataset, we should extend the source range of the pivot table to cover it. So, we go to Analyze&gt;Change Data Source and extend the borders.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Editing Column Names:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>We can edit column names by clicking twice and then renaming them. (Be careful not to duplicate any name.)</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Pivot Table's Design:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>We can edit pivot table's design form Design section. Here we can edit if we want to see total rows or not, if we want the subtitles to be under the title or on another column etc. Doing this we can make the pivot table like a normal table but with functions.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Extracting Source Tables from Pivot Tables:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>In a pivot table if we double click to a cell it will create a new sheet and bring a table of data source for this specific row of the cell.</li>
+  </ul>
+</div>
+
+<!-- Advanced Filter Card (from PDF Page 10 & 11) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.2s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Advanced Filter
+  </h2>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>This feature makes the filtration process faster and easier. We can reach it from Data&gt; Sort & Filter&gt; Advanced.</li>
+    <li>Firstly, we copy the headers of our table and paste them in a different place. Then under new headers we type filtration criteria. (We can use "&gt;,&lt;" signs.)</li>
+    <li>Then we start an advanced filtration process. In the first cell we place the range while in the second cell we place the criteria part.</li>
+    <li>Tip: We can duplicate a header cell if we want to add multiple criteria for this header.</li>
+    <li>We can add more than one row in the criteria range. Adding a criterion with the same row of other criteria means “and” while adding it to another row means "or".</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Automating Advanced Filter:</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>Create a new sheet and paste your headers there.</li>
+    <li>Start and advanced filtration process and select "Copy to another location". Select the ranges and finish the process. (Be sure that the active sheet is the new one.)</li>
+    <li>Then record a macro and repeat the advanced filter process and select the exact same ranges.</li>
+    <li>Go to Developer tab and add a button (from insert). Assign the macro to it.</li>
+    <li>Now whenever you update the filtration range and press this button the filtration will be applied.</li>
+  </ul>
+</div>
+
+<!-- Reference Cells, Columns & Rows Card (from PDF Page 11) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.3s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Reference Cells, Columns & Rows
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">When we are formulating a large range and using auto fill to do so, we might want to fix or lock a cell / column / row in the formulation. We use references in this situation. There are three reference types in excel:</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>A <strong>relative reference</strong> is a cell address without any $ sign, such as A1. It means that the reference will adjust both the row and column according to where the formula is located.</li>
+    <li>An <strong>absolute reference</strong> is a cell address with a $ sign before both the row and column coordinates, such as $A$1. It means that the reference will always point to the same cell, no matter where the formula is located.</li>
+    <li>A <strong>mixed reference</strong> is a cell address with a $ sign before either the row or the column coordinate, but not both, such as $A1 or A$1. It means that only one part of the reference will stay fixed, while the other part will change relative to the position of the formula.</li>
+    <li>Using mixed reference, we can make a multiplication table: <code>&lt;=$A2*B$1&gt;</code> (Then drag the cell down and right.)</li>
+  </ul>
+</div>
+
+<!-- INDEX & MATCH Functions Card (from PDF Page 11 & 12) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.4s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    INDEX & MATCH Functions
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Index (Array, Row Number, Column Number):</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text mb-4">
+    <li>Index function is a developed form of lookup functions. Firstly, we define the range then row and column numbers of the value we are looking for.</li>
+    <li>Note: If you include in index function's array the headers you should include corner cell in match function's array. Otherwise, the numbers won't match.</li>
+    <li>Defining row and column numbers might take too long so here match function takes place.</li>
+  </ul>
+  <h3 class="text-xl font-semibold text-brand-accent mt-4 mb-2">Match (Lookup Value, Array, Match Type):</h3>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li>This function prompts the column or the row number of the lookup value in the defined array. Match Type is 0: exact same / 1: smaller values / -1: bigger values.</li>
+    <li>So, we can use this function to define row and column numbers in the index function. <br><code>&lt;=Index (C5:H10, Match (“T-shirt”, B5:B10,0), Match (2020, C4:H))</code></li>
+    <li>But it is still hard to determine a product's name and sale year in a given data set. So, we can select two cells for match functions and whatever we type in these cells will lookup value for match functions.</li>
+    <li>Tip: If you define row numbers in index function you don't have to define columns. If you don't, the default value will be 1.</li>
+  </ul>
+</div>
+
+<!-- OFFSET Function Card (from PDF Page 12) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.5s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    OFFSET Function
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2"><code>Offset (reference, rows, columns, [height], [width])</code></p>
+  <ul class="list-disc list-inside space-y-1 text-brand-text mb-2">
+      <li><strong>Reference:</strong> The base cell for the formula.</li>
+      <li><strong>Rows:</strong> Destination's coordinates in y axis according to the reference. (+: down / -: up)</li>
+      <li><strong>Columns:</strong> Destination's coordinates in x axis according to the reference. (+: right / -: left)</li>
+      <li><strong>Height:</strong> height of the range it will bring. (Default: 1) - optional</li>
+      <li><strong>Width:</strong> width of the range it will bring. (Default: 1) - optional</li>
+  </ul>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">We use this formula to bring a specific cell / range. Mostly, it's used with other formulas. Examples:</p>
+  <ul class="list-disc list-inside space-y-2 text-brand-text">
+    <li><code>=OFFSET(C3,MATCH(J7,B4:B15,0),0)</code><br>This formula starts from C3. Then it looks for the y axis coordinates of the specified value in J7 using match function. And doesn't change column (0). So it looks for the value of J7 between B4:B17 and brings the value at the right side. An alternative for vlookup.</li>
+    <li><code>=OFFSET(C3,COUNTA(B4:B20),0,-3)</code><br>This formula starts from C3. Then counts the cells with values (goes to the last filled cell) and brings the last 3 cells.</li>
+    <li>Note: In excel formulas if a variable is in square brackets, it means that it is optional.</li>
+  </ul>
+</div>
+
+<!-- Dynamic Drop-Down Lists with Offset Card (from PDF Page 12 & 13) -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 3.6s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Dynamic Drop-Down Lists with Offset
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">We have three countries, and each country has some governorates, and each governorate has some cities in it. We want to make a drop-down list that changes according to the country & governorate values. Here are the steps:</p>
+  <ul class="list-decimal list-inside space-y-2 text-brand-text">
+    <li>Firstly, create the main table that will be composed of 3 columns: country / governorate / city.</li>
+    <li>Secondly, create a table of these values in a new sheet. Each country's name should be repeated as much as it's governorates name and each governorate should be repeated as much as it's cities name.</li>
+    <li>Copy countries' column to another place and remove the duplicates. Sort the new table from A to Z. Then go to the main table and create a drop-down list (Data&gt; Data Validation&gt; List) in the country column sourcing the new country column in sheet 2.</li>
+    <li>Copy country and governorate columns from source table to another place then remove the duplicates. Sort the new table from A to Z. Then, update cell values in this formula according to your file and use it to make dynamic list for governorates:
+        <pre class="bg-gray-800 text-white p-2 my-2 rounded-md overflow-x-auto text-xs"><code class="font-mono">=OFFSET(Sheet2!$D$1,MATCH(Sheet1!$C4,Sheet2!$C$2:$C$9,0),0,COUNTIF(Sheet2!$C$2:$C$9, Sheet1!$C4),1)</code></pre>
+    </li>
+    <li>Copy governorate and city columns to another place and remove the duplicates (to be sure) and sort the table from A to Z. Then, update cell values in this formula according to your file and use it to make dynamic list for cities:
+        <pre class="bg-gray-800 text-white p-2 my-2 rounded-md overflow-x-auto text-xs"><code class="font-mono">=OFFSET(Sheet2!$G$1,MATCH(Sheet1!D4,Sheet2!$F$2:$F$17,0),0,COUNTIF(Sheet2!$F$2:$F$17,Sheet1!D4))</code></pre>
+    </li>
+  </ul>
+</div>

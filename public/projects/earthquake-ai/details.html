@@ -1,0 +1,690 @@
+<!-- Introduction Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.1s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Introduction
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">One of the biggest problems rescue operations face after a devastating earthquake is not knowing where to go because of the mess the destruction creates. In some regions neighborhoods may have collapsed, and in other regions only a couple of buildings may have collapsed. Additionally, in most cases communications are disrupted as well. Hence, it is impossible to reach real-time information. This situation forces rescue teams to make uninformed decisions to save as many lives as possible with the limited available information at that time.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">However, earthquakes and their effects are not completely random phenomena. There are many statistical analyses that can be used to predict the extent of an earthquake's effects. Especially, with the development of modern AI technologies, making such predictions more feasible than ever.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">This study focuses on developing an AI model that can make predictions about the damage a building will get post-earthquake based on structural characteristics to contribute to an informed decision-making process during rescue operations.</p>
+</div>
+
+<!-- Phase-1 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.2s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-1: Definition &amp; Data Collection
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4">Key features needed in the dataset:</p>
+  <ol class="list-decimal list-inside space-y-2 mb-4 pl-4 text-brand-text">
+    <li>Main Structural Characteristics: Age, height, foundation type etc.</li>
+    <li>Geologic Characteristics: Ground type, ground slope, etc.</li>
+    <li>Seismic Intensity Measures: Magnitude, ground acceleration, ground velocity etc.</li>
+  </ol>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">I utilized multiple resources (Google Scholar, Kaggle, Perplexity AI...) for literature review and data collection, and identified the following datasets as suitable candidates for the project:</p>
+  <ul class="list-disc list-inside space-y-2 mb-4 pl-4 text-brand-text">
+    <li>Nepal 2015 Earthquake Dataset</li>
+    <li>Turkey 2023 Earthquake Dataset</li>
+    <li>ANOVA-Statistic-Reduced Building Damage Dataset</li>
+    <li>Observed Damage Database (Da.D.O.) of Past Italian Earthquakes</li>
+  </ul>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">One of the key limitations in statistical models developed for earthquake damage prediction is generalizability of the models. This is mainly because of the lack of diverse geographic data sources. The idea of collecting earthquake damage data has only been around for a relatively short period of time, and the effort required to collect, organize, and ensure data quality in such conditions is too much for most countries.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">As a result, the statistical models developed are limited to the conditions of the training datasets' features. In order to get ahead of this problem, we can try to train a model with datasets from different regions. This will eliminate the generalizability limitations while also closing the gap created by the lack of seismic intensity measures by increasing dataset size and - if applied – relying on deep neural network complexity. Below, are the potential data collection roads and their limitations:</p>
+  <ol class="list-decimal list-inside space-y-2 mb-4 pl-4 text-brand-text">
+    <li>ANOVA dataset is the most promising dataset that contains preprocessed numerical structural data from multiple regions and earthquakes. But unfortunately, the data is not directly accessible from the web and requires authorization.</li>
+    <li>Nepal 2015 Earthquake dataset is the second best dataset that contains pre-earthquake structural characteristic, geographic data and post-earthquake damage data from 30+ regions. However, it is limited to only one earthquake, which weakens the generalizability of a model trained on it.</li>
+    <li>Italy Da.D.O. dataset is also a very promising dataset that contains pre-earthquake structural data and post-earthquake damage data for multiple earthquakes and from multiple regions. Combining this dataset with Nepal 2015 dataset would be an auspicious move. Unfortunately, the dataset is limited in data points and requires authorization as well.</li>
+    <li>The Turkey 2023 Earthquake was a recent and highly destructive occurrence that represents a valuable data source. It contains post-earthquake data from 10+ regions. However, most numerical datasets are not publicly available, and the available datasets are mostly low-resolution post-earthquake imagery data. Using this dataset may require extensive processing power and time with potentially limited favorable results.</li>
+  </ol>
+  <p class="text-brand-text leading-relaxed mt-4 text-justify">Considering the available data collection options, the best practice is to train the model on the Nepal 2015 Earthquake Dataset while utilizing every aspect of DNN accuracy optimization.</p>
+</div>
+
+<!-- Phase-2 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.3s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-2: Exploratory Data Analysis
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">The objective of this EDA is to understand the dataset's structure, identify key characteristics of the features, analyze the distribution of the target variable (building damage grade), and uncover relationships between features and damage outcomes. These insights are crucial for guiding subsequent data preprocessing, feature engineering, and model development steps aimed at predicting building damage levels.</p>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">1. Data Overview</h3>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">df.shape
+df.info()
+df.describe()
+df.isnull().sum()</code></pre>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Shape:</strong> The dataset contains information on 260,601 buildings, with 39 initial features (including building ID and damage grade).</p>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Data Types:</strong> Features include numerical data (e.g., age, count_floors_pre_eq), categorical data represented as objects (e.g., foundation_type, land_surface_condition), categorical data represented as numerical IDs (e.g., geo_level_1_id, geo_level_2_id, geo_level_3_id), and binary flags (e.g., has_superstructure_*, has_secondary_use_*).</p>
+  <p class="text-brand-text leading-relaxed mb-4"><strong class="font-semibold">Missing Values:</strong> An initial check revealed no missing values in the provided dataset columns, simplifying the preprocessing pipeline significantly.</p>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">2. Target Variable Analysis (damage_grade)</h3>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">The target variable, damage_grade, represents the level of damage sustained by buildings, categorized into three grades (likely 1: Low Damage, 2: Medium Damage, 3: Severe Damage/Collapse).</p>
+  <img src="/projects/earthquake-ai/1.png" alt="Distribution of Damage Grades Bar Chart" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Distribution:</strong> The analysis reveals a significant class imbalance.</p>
+  <p class="text-brand-text leading-relaxed mb-2">Damage Grade 2 is the most prevalent class. Damage Grade 3 is the second most common. Damage Grade 1 is the least frequent class.</p>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Implications:</strong> This imbalance necessitates careful handling during modeling:</p>
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Stratified Splitting: Essential to ensure training, validation, and test sets maintain representative proportions of each damage grade.</li>
+    <li>Evaluation Metrics: Accuracy alone will be misleading. Metrics sensitive to imbalance, such as Macro/Weighted F1-score, Precision, Recall per class, and Confusion Matrices, should be prioritized.</li>
+    <li>Modeling Techniques: Techniques like class weighting during training or specialized resampling methods (e.g., SMOTE, though potentially complex with this dataset size) might be considered if initial models struggle with minority classes.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">3. Numerical Feature Analysis</h3>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Key numerical features analyzed include count_floors_pre_eq, age, area_percentage, height_percentage, and count_families.</p>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Distributions:</strong></p>
+  <img src="/projects/earthquake-ai/2.png" alt="Histograms of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Most numerical features (count_floors_pre_eq, age, area_percentage, height_percentage) exhibit right-skewed distributions, indicating that the majority of buildings have fewer floors, are younger, have smaller footprints, and lower heights, with fewer instances of large/tall/old buildings.</li>
+    <li>Age shows a particularly strong peak at lower values and a very long tail, with some values near 1000 suggesting potential outliers or a coded value needing verification or capping.</li>
+    <li>count_families shows extremely low variance, with the vast majority of buildings having only 1 family. This suggests limited predictive power.</li>
+  </ul>
+  <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Relationship with Target:</strong></p>
+  <img src="/projects/earthquake-ai/3.png" alt="Box plots of Numerical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>count_floors_pre_eq and height_percentage show a clear positive association with damage grade; median values increase as damage severity increases.</li>
+    <li>area_percentage displays a slight negative trend, with the median area potentially decreasing for higher damage grades.</li>
+    <li>age shows a less distinct trend in median values, but the spread (IQR and outliers) increases for higher damage grades, suggesting a complex relationship or increased vulnerability variability in older structures.</li>
+    <li>count_families shows virtually no difference across damage grades, confirming its likely low predictive value.</li>
+  </ul>
+  <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Correlations:</strong></p>
+  <img src="/projects/earthquake-ai/4.png" alt="Correlation Matrix of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Linear correlations between numerical features and damage_grade are generally weak (absolute values mostly &lt; 0.15). This indicates that non-linear relationships or, more likely, interactions with categorical features (especially materials and location) are driving damage outcomes.</li>
+    <li>A strong positive correlation (0.77) exists between count_floors_pre_eq and height_percentage, confirming their informational redundancy.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">4. Categorical Feature Analysis</h3>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Cardinality (Unique Values):</strong></p>
+  <ol class="list-decimal list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Binary: has_superstructure_* and has_secondary_use_* features confirmed as binary (0/1). has_superstructure_* flags require no further encoding.</li>
+    <li>Low-Cardinality: Features like land_surface_condition, foundation_type, roof_type, ground_floor_type, other_floor_type, position, plan_configuration, legal_ownership_status have a small number of unique values (3–10), making them suitable for One-Hot Encoding.</li>
+    <li>High-Cardinality: geo_level_1_id (31) is manageable but adds columns. geo_level_2_id (1414) and geo_level_3_id (11595) have very high cardinality, confirming that direct One-Hot Encoding is infeasible due to dimensionality explosion.</li>
+  </ol>
+  <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Relationship with Target:</strong></p>
+  <img src="/projects/earthquake-ai/5.png" alt="Categorical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <ul class="list-disc list-inside space-y-1 mb-1 pl-4 text-brand-text">
+    <li><strong class="font-semibold">Material Features:</strong> Construction materials (foundation_type, roof_type, ground_floor_type, has_superstructure_*) demonstrate very strong predictive power. Categories representing weaker materials (mud, adobe, non-engineered RC, heavy roofs) show significantly higher proportions of severe damage (Grade 3), while stronger materials (engineered RC, appropriate foundations) correlate strongly with lower damage grades (Grade 1 & 2).</li>
+  </ul>
+  <img src="/projects/earthquake-ai/6.png" alt="Superstructure Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/projects/earthquake-ai/7.png" alt="Geo Level 1 ID vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <ul class="list-disc list-inside space-y-1 mt-4 mb-4 pl-4 text-brand-text">
+    <li><strong class="font-semibold">Geographic Location:</strong> geo_level_1_id shows critical importance. Damage distributions vary dramatically across different regions, highlighting its role as a proxy for ground shaking intensity and/or regional vulnerability factors within this specific earthquake event. This strongly supports retaining location information in the model.</li>
+    <li><strong class="font-semibold">Site/Geometry:</strong> land_surface_condition (steep slope) and plan_configuration (irregular shapes) show some association with higher damage grades, suggesting moderate importance.</li>
+    <li><strong class="font-semibold">Other Categoricals:</strong> position and legal_ownership_status show less pronounced differences in damage proportions across their categories, indicating potentially lower predictive importance compared to material and location.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">5. Key Findings &amp; Implications for Modeling</h3>
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>The dataset is clean with no missing values.</li>
+    <li>The target variable damage_grade is imbalanced, requiring stratified sampling and appropriate evaluation metrics (e.g., F1-score).</li>
+    <li>Categorical features, particularly those related to construction materials and geographic location, appear to be the strongest predictors of damage.</li>
+    <li>Numerical features like building size/height (count_floors_pre_eq, height_percentage) show clear relationships with damage, although linear correlations are weak. age has a complex relationship, and count_families has negligible value.</li>
+    <li>High multicollinearity exists between count_floors_pre_eq and height_percentage.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">6. Preprocessing Strategy Must Address:</h3>
+  <ol class="list-decimal list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Categorical Encoding: One-Hot Encoding for low-cardinality features. Careful handling of high-cardinality geo_level_ids is essential (e.g., dropping finer levels, using embeddings, or target encoding if complexity allows). has_superstructure_* flags are already binary.</li>
+    <li>Numerical Scaling: Necessary for neural network performance.</li>
+    <li>Feature Selection: Dropping features with very low variance/predictive power identified during EDA (e.g., count_families, potentially has_secondary_use_* flags, legal_ownership_status, position).</li>
+  </ol>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">7. Conclusion (EDA)</h3>
+  <p class="text-brand-text leading-relaxed text-justify">This EDA confirms the dataset's richness and suitability for building a machine learning model to predict earthquake building damage. The analysis highlights the dominant influence of construction materials and location-based factors (proxied by geo IDs) in this specific event. Key challenges include handling the imbalanced target variable and efficiently encoding high-cardinality geographic features.</p>
+</div>
+
+<!-- Phase-3 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.4s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-3: Preprocessing
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">1. Dropping Features</h3>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">In this step, the features that proved to be ineffective in damage prediction in EDA will be dropped.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Additionally, although geo_level_*_id features hold high predictive potential, their high cardinality leads to dimensionality explosion in one-hot encoding that is used for categorical features. Therefore, to keep prediction potential high while preventing dimensionality explosion only the geo_level_3_id feature will be dropped due to its high cardinality (11,595 unique values).</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono"># Dropping low impact / problematic features based on EDA
+irrelevant = [col for col in df.columns if col.startswith('has_secondary_')]
+irrelevant.append('count_families')
+irrelevant.append('legal_ownership_status')
+irrelevant.append('geo_level_3_id')
+irrelevant.append('position')
+
+df.drop(columns=irrelevant, inplace=True)</code></pre>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">2. Splitting the Dataset</h3>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">It is crucial to do the split before encoding and scaling to prevent data leakage. The dataset is large enough to add validation set as well. The dataset is split into 3 parts:</p>
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>70% Train | 15% Validation | 15% Test</li>
+  </ul>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">y = df[TARGET_COLUMN]
+X = df.drop(columns = [TARGET_COLUMN])
+
+y = y-1 # adjusting damage grade to be 0 indexed for keras
+
+X_train_val, X_test, y_train_val, y_test = train_test_split(
+    X, y,
+    test_size=0.15,
+    random_state=13,
+    stratify=y
+)
+
+X_train, X_val, y_train, y_val = train_test_split(
+    X_train_val, y_train_val,
+    test_size=0.1765, # 15% of the original set
+    random_state=17,
+    stratify=y_train_val
+)</code></pre>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">3. Scaling, Encoding &amp; Transforming Features</h3>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Firstly, we create different lists for different processes.</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono"># Categorical Columns for one-hot encoding
+ohe_cols = sorted (list(set(
+    X_train.select_dtypes(include='object').columns.tolist()
+    + ['geo_level_1_id'] + ['geo_level_2_id'])))
+
+# Binary Passthrough Columns:
+bin_cols = sorted([
+    col for col in X_train.columns if col.startswith('has_superstructure_')])
+
+# Numerical Columns to Scale:
+num_cols = sorted([
+    col for col in X_train.columns if col not in ohe_cols and col not in bin_cols])</code></pre>
+  <p class="text-brand-text leading-relaxed my-4 text-justify">Secondly, initiating scaler and encoder:</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">scaler = StandardScaler()
+encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore', dtype=np.int8)
+scaler.fit(X_train[num_cols])
+encoder.fit(X_train[ohe_cols])</code></pre>
+  <p class="text-brand-text leading-relaxed my-4 text-justify">Finishing:</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">X_train_final = np.hstack([X_train_num, X_train_bin, X_train_ohe])
+X_val_final = np.hstack([X_val_num, X_val_bin, X_val_ohe])
+X_test_final = np.hstack([X_test_num, X_test_bin, X_test_ohe])
+y_train_final = y_train.to_numpy()
+y_val_final = y_val.to_numpy()
+y_test_final = y_test.to_numpy()</code></pre>
+  <p class="text-brand-text leading-relaxed mt-4 text-justify">Now, all three sets are encoded and scaled. Additionally, all sets were converted to numpy arrays for their efficient structure, which contributes to faster training.</p>
+</div>
+
+<!-- Phase-4 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.5s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-4: Model Development &amp; Training
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">I used scikit-learn, keras, pandas, numpy, and matplotlib libraries in python to develop the model. In order to account for the lack of data with desired quality and relation a DNN model will be used.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">The model was initiated with the following structure:</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">model = Sequential(name="EarthquakeDamage_MLP_v1")
+
+model.add(Input(shape=(X_train_final.shape[1],), name="Input_Layer"))
+
+model.add(Dense(128, activation='relu', name='Hidden_Layer_1'))
+model.add(Dropout(rate=0.3, name='Dropout_1'))
+model.add(Dense(64, activation='relu', name='Hidden_Layer_2'))
+model.add(Dropout(rate=0.3, name='Dropout_2'))
+
+# Output Layer
+model.add(Dense(len(np.unique(y_train_final)), activation='softmax', name='Output_Layer'))</code></pre>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono"># Compiling the model
+optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+
+model.compile(
+    optimizer=optimizer,
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)</code></pre>
+  <img src="/projects/earthquake-ai/8.png" alt="Initial DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <p class="text-brand-text leading-relaxed my-4 text-justify">Dropout layers with 0.3 rate where used to prevent overfitting to training dataset due to size and complexity.</p>
+  <p class="text-brand-text leading-relaxed my-4 text-justify">Additionally, early stopping mechanism was added to prevent overfitting.</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">early_stopping = EarlyStopping(
+    monitor='val_loss',
+    patience=10,
+    restore_best_weights=True,
+    verbose=1,
+    mode='min'
+)</code></pre>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono"># Training the model
+history = model.fit(
+    X_train_final,
+    y_train_final,
+    batch_size=128,
+    epochs=100,
+    validation_data=(X_val_final, y_val_final),
+    callbacks=[early_stopping],
+    verbose=1
+)</code></pre>
+</div>
+
+<!-- Phase-5 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.6s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-5: Testing &amp; Evaluation
+  </h2>
+  <img src="/projects/earthquake-ai/9.png" alt="Initial Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+
+  <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
+    <div class="flex-1 w-full md:w-1/2">
+      <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
+        <table class="w-full bg-background-800">
+          <caption class="caption-top text-left p-2 bg-background-900/50 text-brand-text font-semibold text-sm md:text-base border-b border-brand-secondary border-opacity-20 rounded-t-lg">Initial Model Evaluation Metrics</caption>
+          <thead class="bg-background-900/30">
+            <tr>
+              <th class="px-2 py-1 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Metric</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Precision</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Recall</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">F1-score</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Support</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-brand-secondary divide-opacity-10">
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 1</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.65</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.50</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.56</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">3769</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 2</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.85</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.79</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">22239</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 3</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.76</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.61</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">13083</td>
+            </tr>
+            <tr class="bg-background-900/10">
+              <td class="px-2 py-1 text-sm font-semibold text-brand-text">Accuracy</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right" colspan="2"></td>
+              <td class="px-2 py-1 text-sm font-bold text-brand-core text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Macro Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.65</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Weighted Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-1 w-full md:w-1/2">
+      <img src="/projects/earthquake-ai/10.png" alt="Initial Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+    </div>
+  </div>
+
+  <p class="text-brand-text leading-relaxed mt-4 text-justify">The initial accuracy of the model at 73% is promisingly high without any optimization methods used.</p>
+  <p class="text-brand-text leading-relaxed my-4 text-justify">However, the distribution of accuracy across classes is very imbalanced. Especially in grade-1, the model has an accuracy below 50%. This is probably due to the imbalance in the original dataset. We can try to balance the weights in training to fix this issue. Afterwards, we can tune hyperparameters and optimize model structure to optimize model accuracy.</p>
+</div>
+
+<!-- Phase-6 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.7s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-6: Optimization and Refinement
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">1. Balancing Weights Across Damage Categories</h3>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">At first, I tried balancing the weights statistically using class_weight function from scikit-learn. The function over-balanced the weights, causing the accuracy for grade-2 predictions to decrease significantly. Additionally, overall accuracy decreased by 5%.</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">unique_classes = np.unique(y_train_final)
+
+weights = class_weight.compute_class_weight(
+    class_weight='balanced',
+    classes=unique_classes,
+    y=y_train_final
+)</code></pre>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">class_weights_dict = dict(zip(unique_classes, weights))</code></pre>
+
+  <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
+    <div class="flex-1 w-full md:w-1/2">
+      <img src="/projects/earthquake-ai/11.png" alt="Statistically Weighted Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+    </div>
+    <div class="flex-1 w-full md:w-1/2">
+      <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
+        <table class="w-full bg-background-800">
+             <caption class="caption-top text-left p-2 bg-background-900/50 text-brand-text font-semibold text-sm md:text-base border-b border-brand-secondary border-opacity-20 rounded-t-lg">'Balanced' Weighting Model Evaluation Metrics</caption>
+          <thead class="bg-background-900/30">
+            <tr>
+              <th class="px-2 py-1 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Metric</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Precision</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Recall</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">F1-score</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Support</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-brand-secondary divide-opacity-10">
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 1</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.41</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.88</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.56</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">3769</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 2</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.80</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.61</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">22239</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 3</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.71</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">13083</td>
+            </tr>
+            <tr class="bg-background-900/10">
+              <td class="px-2 py-1 text-sm font-semibold text-brand-text">Accuracy</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right" colspan="2"></td>
+              <td class="px-2 py-1 text-sm font-bold text-brand-core text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Macro Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.63</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.74</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.65</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+             <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Weighted Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-brand-text leading-relaxed mt-4 text-justify">Therefore, I decided to edit the weights manually in the next 2 trials and edited the weights to be:</p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono my-4"><code class="font-mono">manual_weights_dict = {0:2.9,1:1,2:1.3}</code></pre>
+  <p class="text-brand-text leading-relaxed text-justify">At the end, although the accuracy across classes had gotten better, the overall accuracy dropped to 72%. Still, arguably, this model overall performs better since it is more balanced across classes.</p>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-8 mb-3">2. Hyperparameter Tuning</h3>
+  <p class="text-brand-text leading-relaxed mb-2 text-justify">Since early stopping function was utilized, epoch number was optimized automatically. The hyperparameters left:</p>
+  <ol class="list-decimal list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Learning Rate (0.001, 0.01, 0.005)</li>
+    <li>Batch Size (32,64, 128, 256)</li>
+  </ol>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">I did about 5–6 trials to manually optimize hyperparameters in this step. Nevertheless, the tuning did not enhance model accuracy by a considerable amount.</p>
+  <div class="overflow-x-auto my-6 shadow-md rounded-lg border border-brand-secondary border-opacity-20">
+    <table class="w-full bg-background-800">
+         <caption class="caption-top text-left p-2 bg-background-900/50 text-brand-text font-semibold text-sm md:text-base border-b border-brand-secondary border-opacity-20 rounded-t-lg">Hyperparameter Tuning Evaluation Metrics (Manual Weights)</caption>
+      <thead class="bg-background-900/30">
+        <tr>
+          <th class="px-2 py-1 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Metric</th>
+          <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Precision</th>
+          <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Recall</th>
+          <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">F1-score</th>
+          <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Support</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-brand-secondary divide-opacity-10">
+        <tr>
+          <td class="px-2 py-1 text-sm text-brand-text">Grade 1</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.51</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.77</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.61</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">3769</td>
+        </tr>
+        <tr>
+          <td class="px-2 py-1 text-sm text-brand-text">Grade 2</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.77</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.75</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.76</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">22239</td>
+        </tr>
+        <tr>
+          <td class="px-2 py-1 text-sm text-brand-text">Grade 3</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.66</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">13083</td>
+        </tr>
+        <tr class="bg-background-900/10">
+          <td class="px-2 py-1 text-sm font-semibold text-brand-text">Accuracy</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right" colspan="2"></td>
+          <td class="px-2 py-1 text-sm font-bold text-brand-core text-right">0.72</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+        </tr>
+        <tr>
+          <td class="px-2 py-1 text-sm text-brand-text">Macro Avg</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.67</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+        </tr>
+         <tr>
+          <td class="px-2 py-1 text-sm text-brand-text">Weighted Avg</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.73</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+          <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="text-xl font-semibold text-brand-accent mt-8 mb-3">3. DNN Structure Optimization</h3>
+  <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
+    <div class="flex-1 w-full md:w-1/2">
+      <img src="/projects/earthquake-ai/12.png" alt="Complex DNN Structure Tested Diagram" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+    </div>
+    <div class="flex-1 w-full md:w-1/2">
+      <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
+        <table class="w-full bg-background-800">
+            <caption class="caption-top text-left p-2 bg-background-900/50 text-brand-text font-semibold text-sm md:text-base border-b border-brand-secondary border-opacity-20 rounded-t-lg">DNN Structure Optimization Evaluation Metrics (Manual Weights)</caption>
+           <thead class="bg-background-900/30">
+               <tr>
+                   <th class="px-2 py-1 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Metric</th>
+                   <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Precision</th>
+                   <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Recall</th>
+                   <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">F1-score</th>
+                   <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Support</th>
+               </tr>
+           </thead>
+           <tbody class="divide-y divide-brand-secondary divide-opacity-10">
+               <tr>
+                   <td class="px-2 py-1 text-sm text-brand-text">Grade 1</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.55</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.61</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">3769</td>
+               </tr>
+               <tr>
+                   <td class="px-2 py-1 text-sm text-brand-text">Grade 2</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.74</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.80</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.77</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">22239</td>
+               </tr>
+               <tr>
+                   <td class="px-2 py-1 text-sm text-brand-text">Grade 3</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.75</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.59</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.66</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">13083</td>
+               </tr>
+               <tr class="bg-background-900/10">
+                   <td class="px-2 py-1 text-sm font-semibold text-brand-text">Accuracy</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right" colspan="2"></td>
+                   <td class="px-2 py-1 text-sm font-bold text-brand-core text-right">0.72</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+               </tr>
+               <tr>
+                   <td class="px-2 py-1 text-sm text-brand-text">Macro Avg</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+               </tr>
+               <tr>
+                   <td class="px-2 py-1 text-sm text-brand-text">Weighted Avg</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+                   <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+               </tr>
+           </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+  <p class="text-brand-text leading-relaxed mt-4 text-justify">Here, I made about 10 trials to optimize hidden layer, neuron and dropout layer numbers. I tried multiple structures and complexified the model as much as possible to enhance accuracy. However, I didn't see a substantial increase in overall accuracy, although there were some improvements in per-class metrics.</p>
+</div>
+
+<!-- Phase-7 Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.8s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Phase-7: Final Model
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">After completing all 3 steps of the optimization phase and tens of trials, I built the final optimized model. This model was chosen as the optimum of the following features:</p>
+  <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
+    <li>Accuracy</li>
+    <li>Efficiency</li>
+    <li>Balance across classes</li>
+  </ul>
+  <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Code, Structure and Results:</strong></p>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono my-4"><code class="font-mono">keras.backend.clear_session()
+
+final_model = Sequential(name="EarthquakeDamage_MLP_ManualWeight")
+final_model.add(Input(shape=(X_train_final.shape[1],), name="Input_Layer"))
+final_model.add(Dense(128, activation='relu', name='Hidden_Layer_1'))
+final_model.add(Dropout(0.3, name='Dropout_1'))
+final_model.add(Dense(64, activation='relu', name='Hidden_Layer_2'))
+final_model.add(Dropout(0.3, name='Dropout_2'))
+final_model.add(Dense(len(np.unique(y_train_final)), activation='softmax', name='Output_L'))
+
+optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+final_model.compile(
+    optimizer=optimizer,
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)</code></pre>
+  <img src="/projects/earthquake-ai/9.png" alt="Final DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono my-4"><code class="font-mono">manual_weights_dict = {0:2.9,1:1,2:1.3}
+
+final_early_stopping = EarlyStopping(
+    monitor='val_loss',
+    patience=10,
+    restore_best_weights=True,
+    verbose=1,
+    mode='min'
+)</code></pre>
+  <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono my-4"><code class="font-mono">history_final = final_model.fit(
+    X_train_final,
+    y_train_final,
+    batch_size=256,
+    epochs=100,
+    validation_data=(X_val_final, y_val_final),
+    callbacks=[final_early_stopping],
+    class_weight=manual_weights_dict,
+    verbose=1
+)</code></pre>
+  <img src="/projects/earthquake-ai/13.png" alt="Final Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
+    <div class="flex-1 w-full md:w-1/2">
+      <img src="/projects/earthquake-ai/14.png" alt="Final Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+    </div>
+    <div class="flex-1 w-full md:w-1/2">
+      <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
+        <table class="w-full bg-background-800">
+             <caption class="caption-top text-left p-2 bg-background-900/50 text-brand-text font-semibold text-sm md:text-base border-b border-brand-secondary border-opacity-20 rounded-t-lg">Final Optimized Model Evaluation Metrics (Manual Weights)</caption>
+          <thead class="bg-background-900/30">
+            <tr>
+              <th class="px-2 py-1 text-left text-xs font-medium text-brand-text uppercase tracking-wider">Metric</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Precision</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Recall</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">F1-score</th>
+              <th class="px-2 py-1 text-right text-xs font-medium text-brand-text uppercase tracking-wider">Support</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-brand-secondary divide-opacity-10">
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 1</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.50</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.77</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.61</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">3769</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 2</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.78</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.71</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.74</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">22239</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Grade 3</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.70</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.69</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.70</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">13083</td>
+            </tr>
+            <tr class="bg-background-900/10">
+              <td class="px-2 py-1 text-sm font-semibold text-brand-text">Accuracy</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right" colspan="2"></td>
+              <td class="px-2 py-1 text-sm font-bold text-brand-core text-right">0.71</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Macro Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.66</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.68</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+             <tr>
+              <td class="px-2 py-1 text-sm text-brand-text">Weighted Avg</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.72</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.71</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">0.71</td>
+              <td class="px-2 py-1 text-sm text-brand-text text-right">39091</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conclusion Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 0.9s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Conclusion
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">This project aimed to develop a ML model to predict post-earthquake damage in buildings to help rescue teams make informed decisions and plan the rescue operations more accurately to save more lives.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">The model was trained on the best dataset available: Nepal 2015 Earthquake Dataset. Because of limitations in the dataset (e.g., lack of earthquake diversity, missing seismic intensity measures) and challenges during training (e.g., dimensionality explosion from encoding), the model has limitations in generalizability.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Afterwards, weight balancing, model structure optimization, and hyperparameter tuning methodologies were utilized to improve model accuracy. The final model achieved around 70–75% accuracy across all 3 damage grades. Although the model have not reached the desired accuracy results in this field, the potential of this modeling approach remains valid.</p>
+  <p class="text-brand-text leading-relaxed text-justify">I am confident that reliable models that can be used in real life scenarios can be achieved if the limitations faced during data collection and training are resolved.</p>
+</div>
+
+<!-- Reflections Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.0s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    Reflections
+  </h2>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Firstly, the most challenging aspect of the project was finding the required data to train the model. I had to review tens of datasets and articles. Some datasets required authorization, some were randomly collected, and others complied only partially with the requirements. As I could not access the desired datasets, the model had serious limitations from the beginning. Despite all these challenges, I decided to try building a model. This experience highlighted the value of attempting to build a prototype even under imperfect conditions.</p>
+  <p class="text-brand-text leading-relaxed mb-4 text-justify">Secondly, during the initial stages of development and preprocessing, I mistakenly applied encoding and scaling before splitting the dataset. This resulted in data leakage and inconsistencies in performance across the training, validation, and testing sets. I had to fix the problem by updating preprocessing from the beginning.</p>
+  <p class="text-brand-text leading-relaxed text-justify">Lastly, over-organizing the code slowed down the refinement process too much for me. Initially, I separated the model training into multiple cells. I then duplicated these cells for each refinement trial, adjusting the desired values. The separation of cells slowed down the process and required repetitive steps. Near the end, I re-organized the code into a single cell and started doing the adjustments on it to speed the process up.</p>
+</div>
+
+<!-- References & Contact Card -->
+<div class="bg-background-800 shadow-xl rounded-lg p-6 sm:p-8 mb-8 animate-fadeIn" style="animation-delay: 1.1s;">
+  <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
+    References &amp; Contact
+  </h2>
+  <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">Code &amp; Data Source</h3>
+  <ul class="list-disc list-inside space-y-2 mb-6 pl-4 text-brand-text">
+    <li>DrivenData. (2019). Richter's Predictor: Modeling Earthquake Damage. Retrieved on 04/04/2025 from <a href="https://www.drivendata.org/competitions/57/nepal-earthquake" target="_blank" rel="noopener noreferrer" class="text-brand-core hover:underline break-all">https://www.drivendata.org/competitions/57/nepal-earthquake</a>.</li>
+    <li><a href="https://colab.research.google.com/drive/18HbOpe4-QWwrWUYsObeiZMY4cvRVV8uI?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-brand-core hover:underline break-all">https://colab.research.google.com/drive/18HbOpe4-QWwrWUYsObeiZMY4cvRVV8uI?usp=sharing</a></li>
+  </ul>
+</div>
