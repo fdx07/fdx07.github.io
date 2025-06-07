@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { NAV_LINKS, PERSONAL_PHOTO_URL } from '../constants';
+import { NAV_LINKS, PERSONAL_PHOTO_URL } from '../constants.ts';
 
 interface HomeNavLinkProps {
   to: string;
