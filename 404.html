@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faisal Durbaa</title>
+    <base href="/fdx07.github.io/">
+    <link rel="icon" type="image/png" href="/public/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      /* Custom Scrollbar Styles */
+      /* For Webkit-based browsers (Chrome, Safari, Edge) */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px; /* For horizontal scrollbars if ever needed directly */
+      }
+      ::-webkit-scrollbar-track {
+        background: #EEEEEE; /* theme('colors.background-900') */
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #134B70; /* theme('colors.brand-secondary') */
+        border-radius: 10px;
+        border: 2px solid #EEEEEE; /* theme('colors.background-900') */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #201E43; /* theme('colors.brand-text') */
+      }
+
+      /* For Firefox */
+      html { /* Apply to html for page scrollbar, or specific elements */
+        scrollbar-width: thin;
+        scrollbar-color: #134B70 #EEEEEE; /* thumb track - theme('colors.brand-secondary') theme('colors.background-900') */
+      }
+      
+      /* Utility class to hide scrollbars */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Core Palette (for reference, classes use semantic names)
+              // 'palette-light-gray': '#EEEEEE',
+              // 'palette-dark-blue': '#134B70',
+              // 'palette-navy': '#201E43',
+
+              // Semantic Mapping to new light theme
+              'background-900': '#EEEEEE',      // Main page background (Light Gray)
+              'background-800': '#FFFFFF',      // Elevated surfaces background (White) - e.g., cards, navbar
+              'brand-text': '#201E43',          // Main text color (Navy)
+              'brand-core': '#134B70',         // Primary interactive color, links (Dark Blue)
+              'brand-accent': '#134B70',        // Accent color, hover states, prose headings (Dark Blue)
+              'brand-secondary': '#134B70',     // Secondary elements: borders, tag backgrounds (Dark Blue)
+              
+              'text-on-primary': '#FFFFFF',     // Text color for display on brand-core/brand-accent backgrounds
+              'text-on-secondary': '#FFFFFF',   // Text color for display on brand-secondary backgrounds (e.g., tags)
+              
+              // Standard colors
+              'white': '#FFFFFF',
+              'black': '#000000',
+              'transparent': 'transparent',
+
+              // Deprecated, ensure migration or remove if not used after review
+              // 'brand-dark-gray': '#37474F', // Should be replaced by a suitable new theme color or removed
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            opacity: {
+              '10': '0.1',
+              '20': '0.2',
+              '30': '0.3',
+              '40': '0.4',
+              '50': '0.5',
+              '60': '0.6',
+              '70': '0.7',
+              '80': '0.8',
+              '90': '0.9',
+            }
+          }
+        }
+        // Note: @tailwindcss/typography plugin for enhanced 'prose' styling is not available via this CDN configuration.
+        // Tailwind's built-in 'prose' defaults will be used.
+        // Line-clamp utilities (e.g., .line-clamp-3) are part of Tailwind CSS v3+ core and should work.
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.1",
+    "recharts": "https://esm.sh/recharts@^2.15.3"
+  }
+}
+</script>
+</head>
+<body class="bg-background-900 text-brand-text">
+    <div id="root"></div>
+    <script type="module" src="https://esm.sh/gh/fdx07/fdx07.github.io/index.tsx"></script>
+</body>
+</html>
