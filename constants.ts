@@ -15,11 +15,11 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     slug: 'the-growing-sector-cybersecurity',
     title: 'The Growing Sector: Cybersecurity Challenges & Trends',
     description: 'An overview of current cybersecurity challenges, emerging trends, and the importance of robust security measures. Includes specific charts.',
-    imageUrl: '/blogs/the-growing-sector-cybersecurity/1.png',
+    imageUrl: '/public/blogs/the-growing-sector-cybersecurity/1.png',
     author: 'Faisal Durbaa',
     publishDate: '2024-05',
     tags: ['Cybersecurity', 'Data Protection', 'Tech Trends', 'Security', 'Charts'],
-    contentUrl: '/blogs/the-growing-sector-cybersecurity/content.html', // Corrected path
+    contentUrl: '/public/blogs/the-growing-sector-cybersecurity/content.html', // Corrected path
     relatedPosts: [], // No related posts specified
   },
   {
@@ -27,11 +27,11 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     slug: 'history-of-the-internet',
     title: 'History of the Internet',
     description: 'Explore the origins, foundational developments, and expansion of the internet, from ARPANET and TCP/IP to the World Wide Web and the future of Web 3.0.',
-    imageUrl: '/blogs/history-of-the-internet/1.png',
+    imageUrl: '/public/blogs/history-of-the-internet/1.png',
     author: 'Faisal Durbaa',
     publishDate: '2024-04', // Example date, adjust as needed
     tags: ['Internet', 'History', 'Technology', 'ARPANET', 'WWW', 'Web 3.0'],
-    contentUrl: '/blogs/history-of-the-internet/content.html', // Path to existing content
+    contentUrl: '/public/blogs/history-of-the-internet/content.html', // Path to existing content
     relatedPosts: [],
   },
   
@@ -44,10 +44,10 @@ export const MOCK_PROJECTS: Project[] = [
     slug: 'earthquake-ai', 
     title: 'Post-Earthquake Building Damage Prediction with Nepal 2015 Dataset',
     description: 'A neural network model to rapidly assess building damage post-earthquake, aiding response efforts.', 
-    imageUrl: '/projects/earthquake-ai/thumbnail.png', 
+    imageUrl: '/public/projects/earthquake-ai/thumbnail.png', 
     isFeatured: true,
-    overviewContentUrl: '/projects/earthquake-ai/overview.html', 
-    detailsContentUrl: '/projects/earthquake-ai/details.html', 
+    overviewContentUrl: '/public/projects/earthquake-ai/overview.html', 
+    detailsContentUrl: '/public/projects/earthquake-ai/details.html', 
     displayDate: "April 2025",
     details: { 
       goal: 'To develop a neural network model for rapid assessment of building damage post-earthquake, aiding first-response efforts.',
@@ -60,10 +60,10 @@ export const MOCK_PROJECTS: Project[] = [
     slug: 'excel-course-notes', // New slug
     title: 'Comprehensive Excel Course Notes',
     description: 'Detailed notes and practical examples from an extensive Excel course, covering beginner to advanced topics.',
-    imageUrl: '/courses/excel-course-notes/thumbnail.png', // Path to new placeholder image
+    imageUrl: '/public/courses/excel-course-notes/thumbnail.png', // Path to new placeholder image
     isFeatured: false, // Or true, as desired
-    overviewContentUrl: '/courses/excel-course-notes/overview.html', // Path to new overview HTML
-    detailsContentUrl: '/courses/excel-course-notes/details.html',   // Path to new details HTML
+    overviewContentUrl: '/public/courses/excel-course-notes/overview.html', // Path to new overview HTML
+    detailsContentUrl: '/public/courses/excel-course-notes/details.html',   // Path to new details HTML
     displayDate: "Ongoing", // Or relevant date
     details: {
       goal: 'To document and share key learnings from a comprehensive Excel course, including formulas, PivotTables, and basic VBA.',
@@ -78,8 +78,8 @@ export const MOCK_PROJECTS: Project[] = [
   }
 ];
 
-export const PERSONAL_PHOTO_URL = '/myphoto.png';
-export const ABOUT_ME_PHOTO_URL = '/myphoto.png';
+export const PERSONAL_PHOTO_URL = '/public/myphoto.png';
+export const ABOUT_ME_PHOTO_URL = '/public/myphoto.png';
 export const EMAIL_ADDRESS = 'durbaafaisal@gmail.com';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/faisaldurbaa/';
 
