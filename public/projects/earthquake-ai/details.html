@@ -55,7 +55,7 @@ df.isnull().sum()</code></pre>
 
   <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">2. Target Variable Analysis (damage_grade)</h3>
   <p class="text-brand-text leading-relaxed mb-4 text-justify">The target variable, damage_grade, represents the level of damage sustained by buildings, categorized into three grades (likely 1: Low Damage, 2: Medium Damage, 3: Severe Damage/Collapse).</p>
-  <img src="/projects/earthquake-ai/1.png" alt="Distribution of Damage Grades Bar Chart" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/1.png" alt="Distribution of Damage Grades Bar Chart" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Distribution:</strong> The analysis reveals a significant class imbalance.</p>
   <p class="text-brand-text leading-relaxed mb-2">Damage Grade 2 is the most prevalent class. Damage Grade 3 is the second most common. Damage Grade 1 is the least frequent class.</p>
   <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Implications:</strong> This imbalance necessitates careful handling during modeling:</p>
@@ -68,14 +68,14 @@ df.isnull().sum()</code></pre>
   <h3 class="text-xl font-semibold text-brand-accent mt-6 mb-3">3. Numerical Feature Analysis</h3>
   <p class="text-brand-text leading-relaxed mb-4 text-justify">Key numerical features analyzed include count_floors_pre_eq, age, area_percentage, height_percentage, and count_families.</p>
   <p class="text-brand-text leading-relaxed mb-2"><strong class="font-semibold">Distributions:</strong></p>
-  <img src="/projects/earthquake-ai/2.png" alt="Histograms of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/2.png" alt="Histograms of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
     <li>Most numerical features (count_floors_pre_eq, age, area_percentage, height_percentage) exhibit right-skewed distributions, indicating that the majority of buildings have fewer floors, are younger, have smaller footprints, and lower heights, with fewer instances of large/tall/old buildings.</li>
     <li>Age shows a particularly strong peak at lower values and a very long tail, with some values near 1000 suggesting potential outliers or a coded value needing verification or capping.</li>
     <li>count_families shows extremely low variance, with the vast majority of buildings having only 1 family. This suggests limited predictive power.</li>
   </ul>
   <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Relationship with Target:</strong></p>
-  <img src="/projects/earthquake-ai/3.png" alt="Box plots of Numerical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/3.png" alt="Box plots of Numerical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
     <li>count_floors_pre_eq and height_percentage show a clear positive association with damage grade; median values increase as damage severity increases.</li>
     <li>area_percentage displays a slight negative trend, with the median area potentially decreasing for higher damage grades.</li>
@@ -83,7 +83,7 @@ df.isnull().sum()</code></pre>
     <li>count_families shows virtually no difference across damage grades, confirming its likely low predictive value.</li>
   </ul>
   <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Correlations:</strong></p>
-  <img src="/projects/earthquake-ai/4.png" alt="Correlation Matrix of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/4.png" alt="Correlation Matrix of Numerical Features" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <ul class="list-disc list-inside space-y-1 mb-4 pl-4 text-brand-text">
     <li>Linear correlations between numerical features and damage_grade are generally weak (absolute values mostly &lt; 0.15). This indicates that non-linear relationships or, more likely, interactions with categorical features (especially materials and location) are driving damage outcomes.</li>
     <li>A strong positive correlation (0.77) exists between count_floors_pre_eq and height_percentage, confirming their informational redundancy.</li>
@@ -97,12 +97,12 @@ df.isnull().sum()</code></pre>
     <li>High-Cardinality: geo_level_1_id (31) is manageable but adds columns. geo_level_2_id (1414) and geo_level_3_id (11595) have very high cardinality, confirming that direct One-Hot Encoding is infeasible due to dimensionality explosion.</li>
   </ol>
   <p class="text-brand-text leading-relaxed mt-2 mb-2"><strong class="font-semibold">Relationship with Target:</strong></p>
-  <img src="/projects/earthquake-ai/5.png" alt="Categorical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/5.png" alt="Categorical Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <ul class="list-disc list-inside space-y-1 mb-1 pl-4 text-brand-text">
     <li><strong class="font-semibold">Material Features:</strong> Construction materials (foundation_type, roof_type, ground_floor_type, has_superstructure_*) demonstrate very strong predictive power. Categories representing weaker materials (mud, adobe, non-engineered RC, heavy roofs) show significantly higher proportions of severe damage (Grade 3), while stronger materials (engineered RC, appropriate foundations) correlate strongly with lower damage grades (Grade 1 & 2).</li>
   </ul>
-  <img src="/projects/earthquake-ai/6.png" alt="Superstructure Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
-  <img src="/projects/earthquake-ai/7.png" alt="Geo Level 1 ID vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/6.png" alt="Superstructure Features vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/7.png" alt="Geo Level 1 ID vs Damage Grade" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <ul class="list-disc list-inside space-y-1 mt-4 mb-4 pl-4 text-brand-text">
     <li><strong class="font-semibold">Geographic Location:</strong> geo_level_1_id shows critical importance. Damage distributions vary dramatically across different regions, highlighting its role as a proxy for ground shaking intensity and/or regional vulnerability factors within this specific earthquake event. This strongly supports retaining location information in the model.</li>
     <li><strong class="font-semibold">Site/Geometry:</strong> land_surface_condition (steep slope) and plan_configuration (irregular shapes) show some association with higher damage grades, suggesting moderate importance.</li>
@@ -225,7 +225,7 @@ model.compile(
     loss='sparse_categorical_crossentropy',
     metrics=['accuracy']
 )</code></pre>
-  <img src="/projects/earthquake-ai/8.png" alt="Initial DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/8.png" alt="Initial DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <p class="text-brand-text leading-relaxed my-4 text-justify">Dropout layers with 0.3 rate where used to prevent overfitting to training dataset due to size and complexity.</p>
   <p class="text-brand-text leading-relaxed my-4 text-justify">Additionally, early stopping mechanism was added to prevent overfitting.</p>
   <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono mb-4"><code class="font-mono">early_stopping = EarlyStopping(
@@ -252,7 +252,7 @@ history = model.fit(
   <h2 class="text-2xl md:text-3xl font-bold text-brand-core mb-6 pb-3 border-b border-brand-secondary border-opacity-30">
     Phase-5: Testing &amp; Evaluation
   </h2>
-  <img src="/projects/earthquake-ai/9.png" alt="Initial Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/9.png" alt="Initial Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
 
   <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
     <div class="flex-1 w-full md:w-1/2">
@@ -315,7 +315,7 @@ history = model.fit(
       </div>
     </div>
     <div class="flex-1 w-full md:w-1/2">
-      <img src="/projects/earthquake-ai/10.png" alt="Initial Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+      <img src="/public/projects/earthquake-ai/10.png" alt="Initial Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
     </div>
   </div>
 
@@ -341,7 +341,7 @@ weights = class_weight.compute_class_weight(
 
   <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
     <div class="flex-1 w-full md:w-1/2">
-      <img src="/projects/earthquake-ai/11.png" alt="Statistically Weighted Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+      <img src="/public/projects/earthquake-ai/11.png" alt="Statistically Weighted Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
     </div>
     <div class="flex-1 w-full md:w-1/2">
       <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
@@ -476,7 +476,7 @@ weights = class_weight.compute_class_weight(
   <h3 class="text-xl font-semibold text-brand-accent mt-8 mb-3">3. DNN Structure Optimization</h3>
   <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
     <div class="flex-1 w-full md:w-1/2">
-      <img src="/projects/earthquake-ai/12.png" alt="Complex DNN Structure Tested Diagram" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+      <img src="/public/projects/earthquake-ai/12.png" alt="Complex DNN Structure Tested Diagram" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
     </div>
     <div class="flex-1 w-full md:w-1/2">
       <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
@@ -569,7 +569,7 @@ final_model.compile(
     loss='sparse_categorical_crossentropy',
     metrics=['accuracy']
 )</code></pre>
-  <img src="/projects/earthquake-ai/9.png" alt="Final DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/9.png" alt="Final DNN Structure Diagram" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto text-sm font-mono my-4"><code class="font-mono">manual_weights_dict = {0:2.9,1:1,2:1.3}
 
 final_early_stopping = EarlyStopping(
@@ -589,10 +589,10 @@ final_early_stopping = EarlyStopping(
     class_weight=manual_weights_dict,
     verbose=1
 )</code></pre>
-  <img src="/projects/earthquake-ai/13.png" alt="Final Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
+  <img src="/public/projects/earthquake-ai/13.png" alt="Final Model Loss and Accuracy Plots" class="my-6 rounded-lg shadow-md mx-auto block w-full h-auto">
   <div class="flex flex-col md:flex-row gap-6 my-6 items-start">
     <div class="flex-1 w-full md:w-1/2">
-      <img src="/projects/earthquake-ai/14.png" alt="Final Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
+      <img src="/public/projects/earthquake-ai/14.png" alt="Final Model Confusion Matrix" class="my-0 rounded-lg shadow-md mx-auto block w-full h-auto object-contain">
     </div>
     <div class="flex-1 w-full md:w-1/2">
       <div class="overflow-x-auto shadow-md rounded-lg border border-brand-secondary border-opacity-20">
