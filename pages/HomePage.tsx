@@ -15,7 +15,7 @@ const HomeNavLink: React.FC<HomeNavLinkProps> = ({ to, label }) => (
     className={`
       flex items-center justify-center text-lg md:text-xl font-semibold text-text-on-primary 
       p-6 rounded-lg shadow-lg 
-      transform transition-all duration-300 
+      transform transition-all duration-100 
       bg-transparent border-2 border-white 
       hover:scale-105 hover:bg-brand-core
     `}
