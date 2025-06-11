@@ -44,6 +44,14 @@ const BlogListPage: React.FC = () => {
     >
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-brand-text mb-2">My Thoughts & Writings</h1> {/* text-navy */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GBT12HC9B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6GBT12HC9B');
+</script>
         <p className="text-lg text-brand-text opacity-70">Articles, insights, and academic notes.</p> {/* text-navy opacity-70 (was text-gray-400) */}
       </header>
 
