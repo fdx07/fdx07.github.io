@@ -139,6 +139,14 @@ const BlogPostPage: React.FC = () => {
 
       <article className="bg-background-800 shadow-2xl rounded-lg p-6 sm:p-8 lg:p-10"> 
         <header className="mb-6 border-b border-brand-secondary border-opacity-30 pb-6"> 
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GBT12HC9B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6GBT12HC9B');
+</script>
           <div className="flex justify-between items-start gap-4">
             <div className="flex-grow">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-core mb-3">{post.title}</h1> 
