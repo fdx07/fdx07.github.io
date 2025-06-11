@@ -14,6 +14,14 @@ const ContactPage: React.FC = () => {
         <p className="text-lg text-brand-text opacity-70 mt-2 max-w-2xl mx-auto"> {/* text-navy opacity-70 (was text-gray-400) */}
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great.
         </p>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GBT12HC9B"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-6GBT12HC9B');
+        </script>
       </header>
 
       <div className="max-w-4xl mx-auto"> {/* Adjusted max-width for two columns */}
