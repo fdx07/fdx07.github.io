@@ -55,14 +55,6 @@ const ProjectsListPage: React.FC = () => {
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-brand-text mb-2">Projects & Course Work</h1>
         <p className="text-lg text-brand-text opacity-70">A showcase of practical applications and academic achievements.</p>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GBT12HC9B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6GBT12HC9B');
-</script>
       </header>
 
       <div className="mb-8 max-w-xl mx-auto">

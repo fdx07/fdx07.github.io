@@ -190,14 +190,6 @@ const ProjectDetailPage: React.FC = () => {
             {project.imageUrl && !detailsHtmlContent.includes(project.imageUrl) && ( // Show image if not already in HTML
               <img src={project.imageUrl} alt={project.title} className="mt-8 w-full max-w-3xl h-auto max-h-[500px] object-contain rounded-lg shadow-xl mx-auto"/>
             )}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GBT12HC9B"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            
-              gtag('config', 'G-6GBT12HC9B');
-            </script>
           </header>
 
           <div className="prose max-w-none text-brand-text leading-relaxed bg-background-800 shadow-xl rounded-lg p-6 sm:p-8" dangerouslySetInnerHTML={{ __html: detailsHtmlContent }} />
