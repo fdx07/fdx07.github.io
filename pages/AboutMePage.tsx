@@ -9,7 +9,7 @@ const AboutMePage: React.FC = () => {
       style={{ animationDelay: '0.1s' }}
     >
       <header className="text-center mb-10 md:mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-brand-text">About Me</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-brand-text">Faisal Durbaa</h1>
       </header>
 
       <div className="max-w-4xl mx-auto bg-background-800 shadow-2xl rounded-lg p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-8"> {/* bg-white */}
